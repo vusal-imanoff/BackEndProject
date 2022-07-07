@@ -1,0 +1,48 @@
+﻿@model Slider
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row justify-content-lg-between">
+    <div class="col-lg-2">
+        <!-- Page Heading -->
+        <h1 class="h3 mb-4 text-gray-800">Create</h1>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <form method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label asp-for="MainTitle" class="form-label"></label>
+                <input class="form-control" asp-for="MainTitle">
+                <span class="text text-danger" asp-validation-for="MainTitle"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="SubTitle" class="form-label"></label>
+                <input class="form-control" asp-for="SubTitle">
+                <span class="text text-danger" asp-validation-for="SubTitle"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                <span class="text text-danger" asp-validation-for="Description"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="RedirectUrl" class="form-label"></label>
+                <input class="form-control" asp-for="RedirectUrl">
+                <span class="text text-danger" asp-validation-for="RedirectUrl"></span>
+            </div>
+            <div class="custom-file mb-3">
+                <input asp-for="File" class="custom-file-input" required>
+                <label for="File" class="custom-file-label">Choose Slider Image...</label>
+                <span class="text text-danger" asp-validation-for="File"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a asp-area="manage" asp-controller="slider" asp-action="index" class="btn btn-primary">Go Back</a>
+        </form>
+    </div>
+</div>
+
+@section Script{
+<partial name="_ValidationScriptsPartial" >
+ }
