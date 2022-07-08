@@ -161,3 +161,11 @@ C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcorea
 C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Brand\Create.cshtml.g.cs
 C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Brand\Update.cshtml.g.cs
 C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Shared\_BrandIndexPartial.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Shared\_SizeIndexPartial.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Size\Index.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Size\Create.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Size\Update.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Shared\_ColorIndexPartial.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Color\Index.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Color\Create.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Color\Update.cshtml.g.cs

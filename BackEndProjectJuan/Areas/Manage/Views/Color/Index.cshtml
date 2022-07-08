@@ -1,15 +1,14 @@
-﻿@model List<Brand>
+﻿@model List<Color>
 @{
     ViewData["Title"] = "Index";
 }
-
 <div class="row justify-content-lg-between">
     <div class="col-lg-2">
         <!-- Page Heading -->
         <h1 class="h3 mb-4 text-gray-800">Brands</h1>
     </div>
     <div class="col-lg-6">
-        <form asp-area="manage" asp-controller="brand" asp-action="index" method="get">
+        <form asp-area="manage" asp-controller="color" asp-action="index" method="get">
             <div class="row justify-content-between align-items-center">
                 <div class="form-group col">
                     <label for="exampleFormControlSelect1">Status Type</label>
@@ -50,7 +49,7 @@
         </form>
     </div>
     <div class="col-lg-1">
-        <a class="btn btn-primary" asp-area="manage" asp-controller="brand" asp-action="create">Create</a>
+        <a class="btn btn-primary" asp-area="manage" asp-controller="color" asp-action="create">Create</a>
     </div>
 </div>
 <div class="row">
@@ -61,13 +60,12 @@
                     <tr>
                         <th>No</th>
                         <th>Name</th>
-                        <th>Product Count</th>
                         <th>Status</th>
                         <th>Settings</th>
                     </tr>
                 </thead>
                 <tbody class="datacontainer">
-                    @await Html.PartialAsync("_BrandIndexPartial", Model)
+                    @await Html.PartialAsync("_ColorIndexPartial", Model)
                 </tbody>
             </table>
         </div>

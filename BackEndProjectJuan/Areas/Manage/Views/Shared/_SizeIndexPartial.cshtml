@@ -1,0 +1,18 @@
+﻿@model List<Size>
+@{
+    int no = 0;
+}
+
+@foreach (Size size in Model)
+{
+    no++;
+    <tr>
+        <td>@no</td>
+        <td>@size.Name</td>
+        <td class="text @(size.IsDeleted ? "text-danger":"text-success")">@(size.IsDeleted ? "DeActive":"Active")</td>
+        <td>
+            <a class="btn btn-warning " asp-area="manage" asp-controller="size" asp-action="update" asp-route-id="@size.Id">Update</a>
+            <a class="btn @(size.IsDeleted ? "btn-primary":"btn-danger") deleteandrestorebtn" asp-area="manage" asp-controller="size" asp-action="@(size.IsDeleted ? "restore":"delete")" asp-route-id="@size.Id" >@(size.IsDeleted ? "ReStore":"Delete")</a>
+        </td>
+    </tr>
+}

@@ -1,0 +1,18 @@
+﻿@model List<Color>
+@{
+    int no = 0;
+}
+
+@foreach (Color color in Model)
+{
+    no++;
+    <tr>
+        <td>@no</td>
+        <td>@color.Name</td>
+        <td class="text @(color.IsDeleted ? "text-danger":"text-success")">@(color.IsDeleted ? "DeActive":"Active")</td>
+        <td>
+            <a class="btn btn-warning " asp-area="manage" asp-controller="color" asp-action="update" asp-route-id="@color.Id">Update</a>
+            <a class="btn @(color.IsDeleted ? "btn-primary":"btn-danger") deleteandrestorebtn" asp-area="manage" asp-controller="color" asp-action="@(color.IsDeleted ? "restore":"delete")" asp-route-id="@color.Id">@(color.IsDeleted ? "ReStore":"Delete")</a>
+        </td>
+    </tr>
+}

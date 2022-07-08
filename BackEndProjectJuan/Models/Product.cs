@@ -19,6 +19,7 @@ namespace BackEndProjectJuan.Models
         [Required]
         [Column(TypeName = "money")]
         public double DiscountPrice { get; set; }
+        public bool IsDeleted { get; set; }
         public int ProductDetailId { get; set; }
         public ProductDetail ProductDetail { get; set; }
 
