@@ -58,7 +58,7 @@
 
             <!-- Nav Item - Brands -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" asp-area="manage" asp-controller="brand" asp-action="index">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Brands</span>
                 </a>
@@ -364,7 +364,9 @@
     <!-- Page level custom scripts -->
     <script src="~/manage/js/demo/chart-area-demo.js"></script>
     <script src="~/manage/js/demo/chart-pie-demo.js"></script>
-    @RenderSection("Script",required:false)
+
+    <script src="~/manage/js/custom.js" asp-append-version="true"></script>
+    @RenderSection("Script", required: false)
 
 </body>
 

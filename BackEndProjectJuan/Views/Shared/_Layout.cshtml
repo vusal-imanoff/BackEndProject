@@ -209,8 +209,8 @@
                                                 <i class="ion-ios-gear-outline"></i>
                                             </a>
                                             <ul class="dropdown-list">
-                                                <li><a href="login-register.html">login</a></li>
-                                                <li><a href="login-register.html">register</a></li>
+                                                <li><a asp-controller="account" asp-action="login">login</a></li>
+                                                <li><a asp-controller="account" asp-action="register">register</a></li>
                                                 <li><a href="my-account.html">my account</a></li>
                                             </ul>
                                         </li>
@@ -466,7 +466,11 @@
         </div>
     </aside>
     <!-- off-canvas menu end -->
-    @RenderBody()
+    <!-- main wrapper start -->
+    <main>
+        @RenderBody()
+    </main>
+    <!-- main wrapper end -->
     <!-- Quick view modal start -->
     <div class="modal" id="quick_view">
         <div class="modal-dialog modal-lg modal-dialog-centered">

@@ -6,7 +6,7 @@
 <div class="row justify-content-lg-between">
     <div class="col-lg-2">
         <!-- Page Heading -->
-        <h1 class="h3 mb-4 text-gray-800">Brands</h1>
+        <h1 class="h3 mb-4 text-gray-800">Sliders</h1>
     </div>
     @*<div class="col-lg-6">
         <form asp-area="manage" asp-controller="product" asp-action="index" method="get">
@@ -65,23 +65,13 @@
                         <th>Image</th>
                         <th>Description</th>
                         <th>RedirectURL</th>
+                        <th>Settings</th>
                         <th>CreatedAt</th>
                     </tr>
                 </thead>
                 <tbody class="datacontainer">
-                    @foreach (Slider slider in Model)
-                    {
-                        <tr>
-                            <td>0</td>
-                            <td>@slider.MainTitle</td>
-                            <td>@slider.SubTitle</td>
-                            <td>@slider.Image</td>
-                            <td>@slider.Description</td>
-                            <td>@slider.RedirectUrl</td>
-                            <td>@slider.CreatedAt</td>
-
-                        </tr>
-                    }
+                   @await Html.PartialAsync("_SliderIndexPartial",Model)
+                    
                 </tbody>
             </table>
         </div>

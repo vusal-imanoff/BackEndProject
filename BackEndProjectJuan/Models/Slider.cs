@@ -12,7 +12,6 @@ namespace BackEndProjectJuan.Models
     {
         public int Id { get; set; }
 
-        [Required]
         [StringLength(500)]
         public string Image { get; set; }
         [Required]
@@ -24,6 +23,7 @@ namespace BackEndProjectJuan.Models
         [Required]
         [StringLength(500)]
         public string Description { get; set; }
+        public bool IsDeleted { get; set; }
         [Required]
         [StringLength(255)]
         public string RedirectUrl { get; set; }

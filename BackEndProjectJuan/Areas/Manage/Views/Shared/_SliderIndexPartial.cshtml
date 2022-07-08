@@ -1,0 +1,23 @@
+﻿@model List<Slider>
+@{
+    int no = 0;
+}
+
+@foreach (Slider slider in Model)
+{
+    no++;
+    <tr>
+        <td>@no</td>
+        <td>@slider.MainTitle</td>
+        <td>@slider.SubTitle</td>
+        <td><img width="100" src="~/assets/img/slider/@slider.Image" /></td>
+        <td>@slider.Description</td>
+        <td>@slider.RedirectUrl</td>
+        <td>
+            <a class="btn btn-warning " asp-area="manage" asp-controller="sliders" asp-action="update" asp-route-id="@slider.Id">Update</a>
+            <a class="btn @(slider.IsDeleted ? "btn-primary":"btn-danger") deleteandrestorebtn" asp-area="manage" asp-controller="sliders" asp-action="@(slider.IsDeleted ? "restore":"delete")" asp-route-id="@slider.Id" asp-route-status="@ViewBag.Status" >@(slider.IsDeleted ? "ReStore":"Delete")</a>
+        </td>
+        <td>@slider.CreatedAt</td>
+
+    </tr>
+}
