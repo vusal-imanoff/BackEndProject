@@ -1,0 +1,19 @@
+﻿@model List<Setting>
+@{
+    int no = 0;
+}
+
+@foreach (Setting setting in Model)
+{
+    no++;
+    <tr>
+        <td>@no</td>
+        <td>@setting.Key</td>
+        <td>@setting.Value</td>
+        <td class="text @(setting.IsDeleted ? "text-danger":"text-success")">@(setting.IsDeleted ? "DeActive":"Active")</td>
+        <td>
+            <a class="btn btn-warning " asp-area="manage" asp-controller="setting" asp-action="update" asp-route-id="@setting.Id">Update</a>
+            <a class="btn @(setting.IsDeleted ? "btn-primary":"btn-danger") deleteandrestorebtn" asp-area="manage" asp-controller="setting" asp-action="@(setting.IsDeleted ? "restore":"delete")" asp-route-id="@setting.Id">@(setting.IsDeleted ? "ReStore":"Delete")</a>
+        </td>
+    </tr>
+}

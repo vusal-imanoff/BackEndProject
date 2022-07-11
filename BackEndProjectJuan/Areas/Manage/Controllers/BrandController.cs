@@ -17,15 +17,16 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public async Task<IActionResult> Index(bool? status)
         {
-            //IQueryable<Brand> query = _context.Brands.Include(b => b.Products);
-            //if (status != null)
-            //{
-            //    query = query.Where(b => b.IsDeleted == status);
-            //}
-            //return View(await query.ToArrayAsync());
-            return View(await _context.Brands.ToListAsync());
+            IQueryable<Brand> query = _context.Brands.Include(b => b.Products);
+            if (status != null)
+            {
+                query = query.Where(b => b.IsDeleted == status);
+            }
+            ViewBag.Status = status;
+            return View(await query.ToListAsync());
         }
         [HttpGet]
         public IActionResult Create()
@@ -35,11 +36,11 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Brand brand)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View();
             }
-            if (await _context.Brands.AnyAsync(b=>b.Name.ToLower()==brand.Name.Trim().ToLower()))
+            if (await _context.Brands.AnyAsync(b => b.Name.ToLower() == brand.Name.Trim().ToLower()))
             {
                 ModelState.AddModelError("Name", $"This {brand.Name} Already Exists");
                 return View();
@@ -54,7 +55,7 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(int? id)
         {
-            if (id==null)
+            if (id == null)
             {
                 return BadRequest();
             }
@@ -72,16 +73,16 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
             {
                 return View();
             }
-            if (id==null)
+            if (id == null)
             {
                 return BadRequest();
             }
-            if (brand.Id!=id)
+            if (brand.Id != id)
             {
                 return BadRequest();
             }
             Brand dbbrand = await _context.Brands.FirstOrDefaultAsync(b => b.Id == brand.Id);
-            if (dbbrand==null)
+            if (dbbrand == null)
             {
                 return NotFound();
             }
@@ -91,7 +92,7 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
                 return View();
             }
 
-            if(dbbrand.Name.ToLower()==brand.Name.Trim().ToLower())
+            if (dbbrand.Name.ToLower() == brand.Name.Trim().ToLower())
             {
                 RedirectToAction("index");
             }
@@ -103,15 +104,15 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
             return RedirectToAction("index");
         }
 
-        public async Task<IActionResult> Delete(int? id,bool? status)
+        public async Task<IActionResult> Delete(int? id, bool? status)
         {
-            
-            if (id==null)
+
+            if (id == null)
             {
                 return BadRequest();
             }
             Brand brand = await _context.Brands.FirstOrDefaultAsync(b => !b.IsDeleted && b.Id == id);
-            if (brand==null)
+            if (brand == null)
             {
                 return NotFound();
             }
@@ -120,17 +121,17 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
             await _context.SaveChangesAsync();
 
             IQueryable<Brand> query = _context.Brands.Include(b => b.Products);
-            if (status!=null)
+            if (status != null)
             {
                 query = query.Where(b => b.IsDeleted == status);
             }
 
-            return PartialView("_BrandIndexPartial",await query.ToListAsync());
+            return PartialView("_BrandIndexPartial", await query.ToListAsync());
         }
 
         public async Task<IActionResult> Restore(int? id, bool? status)
         {
-            if (id==null)
+            if (id == null)
             {
                 return BadRequest();
             }
@@ -147,7 +148,7 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
             await _context.SaveChangesAsync();
 
             IQueryable<Brand> query = _context.Brands.Include(b => b.Products);
-            if (status!=null)
+            if (status != null)
             {
                 query = query.Where(q => q.IsDeleted == status);
             }

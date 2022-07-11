@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,16 +15,35 @@ namespace BackEndProjectJuan.Models
         [StringLength(255)]
         public string Name { get; set; }
         [Required]
+        [StringLength(255)]
+        public string Image { get; set; }
+        [Required]
         [Column(TypeName = "money")]
         public double Price { get; set; }
         [Required]
         [Column(TypeName = "money")]
         public double DiscountPrice { get; set; }
+        public int Count { get; set; }
+        public bool Availability { get; set; }
+        [Required]
+        [StringLength(255)]
+        public string Description { get; set; }
         public bool IsDeleted { get; set; }
-        public int ProductDetailId { get; set; }
-        public ProductDetail ProductDetail { get; set; }
-
         public int BrandId { get; set; }
         public Brand Brand { get; set; }
+        public int GenderId { get; set; }
+        public Gender Gender { get; set; }
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
+        public Nullable<DateTime> Createdat { get; set; }
+        public Nullable<DateTime> UpdatedAt { get; set; }
+        public Nullable<DateTime> DeletedAt { get; set; }
+
+        public IEnumerable<ProductImages> ProductImages { get; set; }
+        public IEnumerable<ProductSocialAddress> ProductSocialAddresses { get; set; }
+        [NotMapped]
+        public IFormFile MainFile { get; set; }
+        [NotMapped]
+        public List<IFormFile> Files { get; set; }
     }
 }

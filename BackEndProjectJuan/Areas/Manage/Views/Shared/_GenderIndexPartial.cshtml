@@ -1,0 +1,19 @@
+﻿@model List<Gender>
+@{
+    int no = 0;
+}
+
+@foreach (Gender gender in Model)
+{
+    no++;
+    <tr>
+        <td>@no</td>
+        <td>@gender.Name</td>
+        <td>@gender.Products?.Count()</td>
+        <td class="text @(gender.IsDeleted ? "text-danger":"text-success")">@(gender.IsDeleted ? "DeActive":"Active")</td>
+        <td>
+            <a class="btn btn-warning " asp-area="manage" asp-controller="gender" asp-action="update" asp-route-id="@gender.Id">Update</a>
+            <a class="btn @(gender.IsDeleted ? "btn-primary":"btn-danger") deleteandrestorebtn" asp-area="manage" asp-controller="gender" asp-action="@(gender.IsDeleted ? "restore":"delete")" asp-route-id="@gender.Id" asp-route-status="@ViewBag.Status">@(gender.IsDeleted ? "ReStore":"Delete")</a>
+        </td>
+    </tr>
+}

@@ -17,9 +17,15 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(bool? status)
         {
-            return View( await _context.Colors.ToListAsync());
+            IQueryable<Color> query = _context.Colors;
+            if (status != null)
+            {
+                query = query.Where(b => b.IsDeleted == status);
+            }
+            ViewBag.Status = status;
+            return View(await query.ToListAsync());
         }
 
         [HttpGet]

@@ -16,6 +16,8 @@ namespace BackEndProjectJuan.Models
         public Nullable<DateTime> CreatedAt { get; set; }
         public Nullable<DateTime> UpdatedAt { get; set; }
         public Nullable<DateTime> DeletedAt { get; set; }
+        public IEnumerable<Product> Products { get; set; }
+
 
     }
 }

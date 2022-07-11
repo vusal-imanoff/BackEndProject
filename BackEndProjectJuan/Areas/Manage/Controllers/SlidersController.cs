@@ -29,14 +29,12 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
             IQueryable<Slider> query = _context.Sliders;
             if (status != null)
             {
-                query.Where(s => s.IsDeleted);
+                query = query.Where(b => b.IsDeleted == status);
             }
             ViewBag.Status = status;
-
             return View(await query.ToListAsync());
-            //return View(await _context.Sliders.Where(s=>!s.IsDeleted).ToListAsync()) ;
         }
-        
+
         [HttpGet]
         public IActionResult Create()
         {

@@ -1,4 +1,6 @@
 using BackEndProjectJuan.DAL;
+using BackEndProjectJuan.Interfaces;
+using BackEndProjectJuan.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -35,6 +37,13 @@ namespace BackEndProjectJuan
             });
 
             services.AddHttpContextAccessor();
+
+            services.AddScoped<ILayoutService, LayoutService>();
+        }
+
+        private object ILayoutServices(IServiceProvider arg)
+        {
+            throw new NotImplementedException();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

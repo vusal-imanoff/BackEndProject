@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace BackEndProjectJuan.Models
 {
-    public class ProductDetail
+    public class Gender
     {
         public int Id { get; set; }
-        public bool Availability { get; set; }
         [Required]
         [StringLength(255)]
-        public string Description { get; set; }
+        public string Name { get; set; }
+        public bool IsDeleted { get; set; }
+        public IEnumerable<Product> Products { get; set; }
+
     }
 }

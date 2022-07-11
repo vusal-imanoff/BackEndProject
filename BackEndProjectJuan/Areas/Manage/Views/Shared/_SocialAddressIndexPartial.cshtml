@@ -1,0 +1,18 @@
+﻿@model List<SocialAddress>
+@{
+    int no = 0;
+}
+
+@foreach (SocialAddress social in Model)
+{
+    no++;
+    <tr>
+        <td>@no</td>
+        <td>@social.Name</td>
+        <td class="text @(social.IsDeleted ? "text-danger":"text-success")">@(social.IsDeleted ? "DeActive":"Active")</td>
+        <td>
+            <a class="btn btn-warning " asp-area="manage" asp-controller="socialaddress" asp-action="update" asp-route-id="@social.Id">Update</a>
+            <a class="btn @(social.IsDeleted ? "btn-primary":"btn-danger") deleteandrestorebtn" asp-area="manage" asp-controller="socialaddress" asp-action="@(social.IsDeleted ? "restore":"delete")" asp-route-id="@social.Id">@(social.IsDeleted ? "ReStore":"Delete")</a>
+        </td>
+    </tr>
+}

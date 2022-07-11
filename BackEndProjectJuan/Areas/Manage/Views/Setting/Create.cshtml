@@ -1,0 +1,36 @@
+﻿@model Setting
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="row justify-content-lg-between">
+    <div class="col-lg-2">
+        <!-- Page Heading -->
+        <h1 class="h3 mb-4 text-gray-800">Create</h1>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <form method="post">
+            <div class="mb-3">
+                <label asp-for="Key" class="form-label"></label>
+                <input class="form-control" asp-for="Key">
+                <span class="text text-danger" asp-validation-for="Key"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Value" class="form-label"></label>
+                <input class="form-control" asp-for="Value">
+                <span class="text text-danger" asp-validation-for="Value"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a asp-area="manage" asp-controller="setting" asp-action="index" class="btn btn-primary">Go Back</a>
+        </form>
+    </div>
+</div>
+
+@section Script{
+
+    <partial name="_ValidationScriptsPartial">
+}

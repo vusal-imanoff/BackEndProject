@@ -16,15 +16,15 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(bool? status)
         {
-            //IQueryable<Brand> query = _context.Brands.Include(b => b.Products);
-            //if (status != null)
-            //{
-            //    query = query.Where(b => b.IsDeleted == status);
-            //}
-            //return View(await query.ToArrayAsync());
-            return View(await _context.Sizes.ToListAsync());
+            IQueryable<Size> query = _context.Sizes;
+            if (status != null)
+            {
+                query = query.Where(b => b.IsDeleted == status);
+            }
+            ViewBag.Status = status;
+            return View(await query.ToListAsync());
         }
         [HttpGet]
         public IActionResult Create()

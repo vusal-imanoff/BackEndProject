@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20220709154758_UpdateSettingsTables.cs" />
+    <Compile Remove="Migrations\20220709154758_UpdateSettingsTables.Designer.cs" />
+    <Compile Remove="Migrations\20220709154902_UpdateSettingsTableAddIsdeleted.cs" />
+    <Compile Remove="Migrations\20220709154902_UpdateSettingsTableAddIsdeleted.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.26" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.26" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.26">

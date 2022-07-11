@@ -97,6 +97,26 @@ namespace BackEndProjectJuan.Migrations
                     b.ToTable("Colors");
                 });
 
+            modelBuilder.Entity("BackEndProjectJuan.Models.Gender", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Genders");
+                });
+
             modelBuilder.Entity("BackEndProjectJuan.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -104,11 +124,39 @@ namespace BackEndProjectJuan.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("Availability")
+                        .HasColumnType("bit");
+
                     b.Property<int>("BrandId")
                         .HasColumnType("int");
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("Createdat")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
                     b.Property<decimal>("DiscountPrice")
                         .HasColumnType("money");
+
+                    b.Property<int>("GenderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -121,36 +169,18 @@ namespace BackEndProjectJuan.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("money");
 
-                    b.Property<int>("ProductDetailId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BrandId");
 
-                    b.HasIndex("ProductDetailId");
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("GenderId");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("BackEndProjectJuan.Models.ProductDetail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Availability")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(255)")
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProductDetails");
                 });
 
             modelBuilder.Entity("BackEndProjectJuan.Models.ProductImages", b =>
@@ -182,9 +212,6 @@ namespace BackEndProjectJuan.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ColorId")
                         .HasColumnType("int");
 
@@ -195,8 +222,6 @@ namespace BackEndProjectJuan.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.HasIndex("ColorId");
 
@@ -235,6 +260,31 @@ namespace BackEndProjectJuan.Migrations
                     b.HasIndex("SocialAddressId");
 
                     b.ToTable("ProductSocialAddresses");
+                });
+
+            modelBuilder.Entity("BackEndProjectJuan.Models.Setting", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Settings");
                 });
 
             modelBuilder.Entity("BackEndProjectJuan.Models.Size", b =>
@@ -333,9 +383,15 @@ namespace BackEndProjectJuan.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BackEndProjectJuan.Models.ProductDetail", "ProductDetail")
+                    b.HasOne("BackEndProjectJuan.Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("ProductDetailId")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BackEndProjectJuan.Models.Gender", "Gender")
+                        .WithMany()
+                        .HasForeignKey("GenderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -343,7 +399,7 @@ namespace BackEndProjectJuan.Migrations
             modelBuilder.Entity("BackEndProjectJuan.Models.ProductImages", b =>
                 {
                     b.HasOne("BackEndProjectJuan.Models.Product", "Product")
-                        .WithMany()
+                        .WithMany("ProductImages")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -351,12 +407,6 @@ namespace BackEndProjectJuan.Migrations
 
             modelBuilder.Entity("BackEndProjectJuan.Models.ProductItems", b =>
                 {
-                    b.HasOne("BackEndProjectJuan.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("BackEndProjectJuan.Models.Color", "Color")
                         .WithMany()
                         .HasForeignKey("ColorId")
@@ -379,7 +429,7 @@ namespace BackEndProjectJuan.Migrations
             modelBuilder.Entity("BackEndProjectJuan.Models.ProductSocialAddress", b =>
                 {
                     b.HasOne("BackEndProjectJuan.Models.Product", "Product")
-                        .WithMany()
+                        .WithMany("ProductSocialAddresses")
                         .HasForeignKey("ProductId");
 
                     b.HasOne("BackEndProjectJuan.Models.SocialAddress", "SocialAddress")
