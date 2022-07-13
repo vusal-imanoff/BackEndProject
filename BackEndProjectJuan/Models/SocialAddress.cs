@@ -13,5 +13,7 @@ namespace BackEndProjectJuan.Models
         [StringLength(255)]
         public string Name { get; set; }
         public bool IsDeleted { get; set; }
+        public IEnumerable<ProductSocialAddress> ProductSocialAddresses { get; set; }
+
     }
 }

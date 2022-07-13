@@ -38,5 +38,15 @@ $(document).ready(function () {
                 $('.datacontainer').html(data)
             })
     })
+    $(document).on('click', '.productimageremovebtn', function (e) {
+        e.preventDefault();
+        fetch($(this).attr('href'))
+            .then(res => res.text())
+            .then(data => {
+                $('.productimagescontainer').html(data)
+            })
+
+    })
 })
+
 

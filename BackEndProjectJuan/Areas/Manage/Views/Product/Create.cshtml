@@ -1,0 +1,100 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row justify-content-lg-between">
+    <div class="col-lg-2">
+        <!-- Page Heading -->
+        <h1 class="h3 mb-4 text-gray-800">Create</h1>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <form method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input class="form-control" asp-for="Name">
+                <span class="text text-danger" asp-validation-for="Name"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Price" class="form-label"></label>
+                <input class="form-control" asp-for="Price">
+                <span class="text text-danger" asp-validation-for="Price"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="DiscountPrice" class="form-label"></label>
+                <input class="form-control" asp-for="DiscountPrice">
+                <span class="text text-danger" asp-validation-for="DiscountPrice"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Count" class="form-label"></label>
+                <input class="form-control" asp-for="Count">
+                <span class="text text-danger" asp-validation-for="Count"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                <span class="text text-danger" asp-validation-for="Description"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="FacebookUrl" class="form-label"></label>
+                <input class="form-control" asp-for="FacebookUrl">
+                <span class="text text-danger" asp-validation-for="FacebookUrl"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="TwitterUrl" class="form-label"></label>
+                <input class="form-control" asp-for="TwitterUrl">
+                <span class="text text-danger" asp-validation-for="TwitterUrl"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="PinterestUrl" class="form-label"></label>
+                <input class="form-control" asp-for="PinterestUrl">
+                <span class="text text-danger" asp-validation-for="PinterestUrl"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="GooglePlusUrl" class="form-label"></label>
+                <input class="form-control" asp-for="GooglePlusUrl">
+                <span class="text text-danger" asp-validation-for="GooglePlusUrl"></span>
+            </div>
+            <div class="form-group">
+                <label for="BrandId">Brands</label>
+                <select class="form-control" asp-for="BrandId" asp-items="new SelectList(ViewBag.Brands,nameof(Brand.Id), nameof(Brand.Name))">
+                    <option>Select Brand</option>
+                </select>
+                <span class="text text-danger" asp-validation-for="BrandId"></span>
+            </div>
+            <div class="form-group">
+                <label for="CategoryId">Categories</label>
+                <select class="form-control" asp-for="CategoryId" asp-items="new SelectList(ViewBag.Categories,nameof(Category.Id), nameof(Category.Name))">
+                    <option>Select Category</option>
+                </select>
+                <span class="text text-danger" asp-validation-for="CategoryId"></span>
+            </div>
+            <div class="form-group">
+                <label for="GenderId">Genders</label>
+                <select class="form-control" asp-for="GenderId" asp-items="new SelectList(ViewBag.Genders,nameof(Gender.Id), nameof(Gender.Name))">
+                    <option>Select Gender</option>
+                </select>
+                <span class="text text-danger" asp-validation-for="GenderId"></span>
+            </div>
+            <div class="custom-file mb-3">
+                <input asp-for="MainFile" class="custom-file-input" required>
+                <label for="MainFile" class="custom-file-label">Choose Image file...</label>
+                <span class="text text-danger" asp-validation-for="MainFile"></span>
+            </div>
+            <div class="custom-file mb-3">
+                <input asp-for="Files" class="custom-file-input" required>
+                <label for="Files" class="custom-file-label">Choose All Images...</label>
+                <span class="text text-danger" asp-validation-for="Files"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a asp-area="manage" asp-controller="product" asp-action="index" class="btn btn-primary">Go Back</a>
+        </form>
+    </div>
+</div>
+
+@section Script{
+
+    <partial name="_ValidationScriptsPartial">
+}

@@ -14,7 +14,6 @@ namespace BackEndProjectJuan.Models
         public int SocialAddressId { get; set; }
         public SocialAddress SocialAddress { get; set; }
         [Required]
-        [StringLength(255)]
         public string Url { get; set; }
     }
 }

@@ -14,7 +14,6 @@ namespace BackEndProjectJuan.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
-        [Required]
         [StringLength(255)]
         public string Image { get; set; }
         [Required]
@@ -28,18 +27,27 @@ namespace BackEndProjectJuan.Models
         [Required]
         [StringLength(255)]
         public string Description { get; set; }
-        public bool IsDeleted { get; set; }
+        [Required]
+
+        public string FacebookUrl  { get; set; }
+        [Required]
+        public string TwitterUrl  { get; set; }
+        [Required]
+        public string PinterestUrl  { get; set; }
+        [Required]
+        public string GooglePlusUrl  { get; set; }
         public int BrandId { get; set; }
         public Brand Brand { get; set; }
         public int GenderId { get; set; }
         public Gender Gender { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+        public bool IsDeleted { get; set; }
         public Nullable<DateTime> Createdat { get; set; }
         public Nullable<DateTime> UpdatedAt { get; set; }
         public Nullable<DateTime> DeletedAt { get; set; }
 
-        public IEnumerable<ProductImages> ProductImages { get; set; }
+        public List<ProductImages> ProductImages  { get; set; }
         public IEnumerable<ProductSocialAddress> ProductSocialAddresses { get; set; }
         [NotMapped]
         public IFormFile MainFile { get; set; }

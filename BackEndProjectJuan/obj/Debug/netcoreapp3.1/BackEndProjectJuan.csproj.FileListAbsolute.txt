@@ -188,3 +188,12 @@ C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcorea
 C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\SocialAddress\Index.cshtml.g.cs
 C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\SocialAddress\Create.cshtml.g.cs
 C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\SocialAddress\Update.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Shared\_ProductImagePartial.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Product\Update.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Product\Create.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Shared\_ProductIndexPartial.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll

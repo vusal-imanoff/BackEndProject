@@ -34,8 +34,8 @@
 </head>
 
 <body>
-    @await Component.InvokeAsync("Header",settings)
-   
+    @await Component.InvokeAsync("Header", settings)
+
     <!-- off-canvas menu start -->
     <aside class="off-canvas-wrapper">
         <div class="off-canvas-overlay"></div>
@@ -314,7 +314,7 @@
         </div>
     </div>
     <!-- Quick view modal end -->
-   @await Component.InvokeAsync("Footer",settings)
+    @await Component.InvokeAsync("Footer", settings)
     <!-- offcanvas search form start -->
     <div class="offcanvas-search-wrapper">
         <div class="offcanvas-search-inner">
@@ -422,6 +422,7 @@
     <script src="~/assets/js/plugins.js"></script>
     <!--=== Active Js ===-->
     <script src="~/assets/js/active.js"></script>
+    @RenderSection("Script", required: false)
 </body>
 
 
