@@ -19,8 +19,15 @@ using BackEndProjectJuan.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\Areas\Manage\Views\_ViewImports.cshtml"
+using BackEndProjectJuan.Areas.Manage.ViewModels.AccountViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a931a0f0fe49facb8665670c94f1b4c2c182c05c", @"/Areas/Manage/Views/Category/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"243d0e02e089fcd694e8d6ecf16bbde89b4fc4fd", @"/Areas/Manage/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"96493e92c661d6da1c85087fcf7b920466a49578", @"/Areas/Manage/Views/_ViewImports.cshtml")]
     public class Areas_Manage_Views_Category_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Category>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("value", "", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -68,7 +75,7 @@ using BackEndProjectJuan.Models;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n<div class=\"row justify-content-lg-between\">\r\n    <div class=\"col-lg-2\">\r\n        <!-- Page Heading -->\r\n        <h1 class=\"h3 mb-4 text-gray-800\">Categoires</h1>\r\n    </div>\r\n    <div class=\"col-lg-6\">\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a931a0f0fe49facb8665670c94f1b4c2c182c05c6626", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a931a0f0fe49facb8665670c94f1b4c2c182c05c6876", async() => {
                 WriteLiteral(@"
             <div class=""row justify-content-between align-items-center"">
                 <div class=""form-group col"">
@@ -84,7 +91,7 @@ using BackEndProjectJuan.Models;
 #line hidden
 #nullable disable
                 WriteLiteral("                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a931a0f0fe49facb8665670c94f1b4c2c182c05c7519", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a931a0f0fe49facb8665670c94f1b4c2c182c05c7769", async() => {
                     WriteLiteral("All");
                 }
                 );
@@ -113,7 +120,7 @@ using BackEndProjectJuan.Models;
 #line hidden
 #nullable disable
                 WriteLiteral("                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a931a0f0fe49facb8665670c94f1b4c2c182c05c9393", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a931a0f0fe49facb8665670c94f1b4c2c182c05c9643", async() => {
                     WriteLiteral("All");
                 }
                 );
@@ -146,7 +153,7 @@ using BackEndProjectJuan.Models;
 #line hidden
 #nullable disable
                 WriteLiteral("                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a931a0f0fe49facb8665670c94f1b4c2c182c05c11192", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a931a0f0fe49facb8665670c94f1b4c2c182c05c11442", async() => {
                     WriteLiteral("Active");
                 }
                 );
@@ -175,7 +182,7 @@ using BackEndProjectJuan.Models;
 #line hidden
 #nullable disable
                 WriteLiteral("                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a931a0f0fe49facb8665670c94f1b4c2c182c05c13070", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a931a0f0fe49facb8665670c94f1b4c2c182c05c13320", async() => {
                     WriteLiteral("Active");
                 }
                 );
@@ -209,7 +216,7 @@ using BackEndProjectJuan.Models;
 #line hidden
 #nullable disable
                 WriteLiteral("                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a931a0f0fe49facb8665670c94f1b4c2c182c05c14874", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a931a0f0fe49facb8665670c94f1b4c2c182c05c15124", async() => {
                     WriteLiteral("DeActive");
                 }
                 );
@@ -238,7 +245,7 @@ using BackEndProjectJuan.Models;
 #line hidden
 #nullable disable
                 WriteLiteral("                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a931a0f0fe49facb8665670c94f1b4c2c182c05c16754", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a931a0f0fe49facb8665670c94f1b4c2c182c05c17004", async() => {
                     WriteLiteral("DeActive");
                 }
                 );
@@ -284,7 +291,7 @@ using BackEndProjectJuan.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n    </div>\r\n    <div class=\"col-lg-1\">\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a931a0f0fe49facb8665670c94f1b4c2c182c05c20298", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a931a0f0fe49facb8665670c94f1b4c2c182c05c20548", async() => {
                 WriteLiteral("Create");
             }
             );

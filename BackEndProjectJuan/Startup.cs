@@ -48,6 +48,7 @@ namespace BackEndProjectJuan
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
             }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
 
+            services.AddScoped<ILayoutService, LayoutService>();
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromSeconds(10);
@@ -55,13 +56,9 @@ namespace BackEndProjectJuan
 
             services.AddHttpContextAccessor();
 
-            services.AddScoped<ILayoutService, LayoutService>();
         }
 
-        private object ILayoutServices(IServiceProvider arg)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -70,18 +67,21 @@ namespace BackEndProjectJuan
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseStaticFiles();
+            app.UseRouting();
             app.UseSession();
 
-            app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseStaticFiles();
+
+
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                    name: "areas",
-                   pattern: "{area:exists}/{controller=dashboard}/{action=Index}/{id?}");
+                   pattern: "{area:exists}/{controller=account}/{action=login}/{id?}");
 
                 endpoints.MapControllerRoute(
                     name: "default",

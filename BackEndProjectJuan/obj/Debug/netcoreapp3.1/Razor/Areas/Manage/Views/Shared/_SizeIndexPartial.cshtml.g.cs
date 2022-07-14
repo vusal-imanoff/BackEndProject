@@ -19,8 +19,15 @@ using BackEndProjectJuan.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\Areas\Manage\Views\_ViewImports.cshtml"
+using BackEndProjectJuan.Areas.Manage.ViewModels.AccountViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0b639d4b0dab7f05283c9d96b06349a779da5338", @"/Areas/Manage/Views/Shared/_SizeIndexPartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"243d0e02e089fcd694e8d6ecf16bbde89b4fc4fd", @"/Areas/Manage/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"96493e92c661d6da1c85087fcf7b920466a49578", @"/Areas/Manage/Views/_ViewImports.cshtml")]
     public class Areas_Manage_Views_Shared__SizeIndexPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Size>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("btn btn-warning "), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -105,7 +112,7 @@ WriteAttributeValue(" ", 174, size.IsDeleted ? "text-danger":"text-success", 175
 #line hidden
 #nullable disable
             WriteLiteral("</td>\r\n        <td>\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0b639d4b0dab7f05283c9d96b06349a779da53386245", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0b639d4b0dab7f05283c9d96b06349a779da53386495", async() => {
                 WriteLiteral("Update");
             }
             );
@@ -141,7 +148,7 @@ WriteAttributeValue(" ", 174, size.IsDeleted ? "text-danger":"text-success", 175
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0b639d4b0dab7f05283c9d96b06349a779da53388991", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0b639d4b0dab7f05283c9d96b06349a779da53389241", async() => {
 #nullable restore
 #line 15 "C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\Areas\Manage\Views\Shared\_SizeIndexPartial.cshtml"
                                                                                                                                                                                                                Write(size.IsDeleted ? "ReStore":"Delete");

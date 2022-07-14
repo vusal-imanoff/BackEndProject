@@ -197,3 +197,10 @@ C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\bin\Debug\netcorea
 C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
 C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\bin\Debug\netcoreapp3.1\MailKit.dll
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\bin\Debug\netcoreapp3.1\MimeKit.dll
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Account\Login.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Shared\_UserIndexPartial.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\User\Index.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\User\Create.cshtml.g.cs

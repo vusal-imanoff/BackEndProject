@@ -55,7 +55,24 @@ namespace BackEndProjectJuan.Controllers
             }
 
             await _userManager.AddToRoleAsync(appUser, "Member");
-            return RedirectToAction("index", "home");
+            //return RedirectToAction("index", "home");
+            return Content("goto email");
+        }
+
+        public async Task<IActionResult> VerifyEmail(string userId, string token)
+        {
+            if (userId==null || token==null)
+            {
+                return BadRequest();
+            }
+            AppUser appUser = await _userManager.FindByIdAsync(userId);
+            if (appUser==null)
+            {
+                return BadRequest();
+            }
+            await _userManager.ConfirmEmailAsync(appUser, token);
+            await _signInManager.SignInAsync(appUser, false);
+            return RedirectToAction("login", "account");
         }
 
         [HttpGet]
@@ -88,8 +105,12 @@ namespace BackEndProjectJuan.Controllers
                 return View();
             }
 
-            //return RedirectToAction("index", "home");
-            return Content("ok");
+            return RedirectToAction("index", "home");
+        }
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("login", "account");
         }
 
         #region CreateRole
