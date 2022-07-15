@@ -48,7 +48,10 @@ namespace BackEndProjectJuan
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
             }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
 
+
+
             services.AddScoped<ILayoutService, LayoutService>();
+            services.AddScoped<IEmailService, EmailService>();
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromSeconds(10);
@@ -58,7 +61,6 @@ namespace BackEndProjectJuan
 
         }
 
-       
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -75,7 +77,7 @@ namespace BackEndProjectJuan
 
             app.UseStaticFiles();
 
-
+            app.UseHttpsRedirection();
 
             app.UseEndpoints(endpoints =>
             {

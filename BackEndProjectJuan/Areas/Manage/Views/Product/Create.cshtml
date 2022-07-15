@@ -28,6 +28,11 @@
                 <span class="text text-danger" asp-validation-for="DiscountPrice"></span>
             </div>
             <div class="mb-3">
+                <label asp-for="Extax" class="form-label"></label>
+                <input class="form-control" asp-for="Extax">
+                <span class="text text-danger" asp-validation-for="Extax"></span>
+            </div>
+            <div class="mb-3">
                 <label asp-for="Count" class="form-label"></label>
                 <input class="form-control" asp-for="Count">
                 <span class="text text-danger" asp-validation-for="Count"></span>
@@ -77,6 +82,13 @@
                     <option>Select Gender</option>
                 </select>
                 <span class="text text-danger" asp-validation-for="GenderId"></span>
+            </div>
+            <div class="form-group">
+                <label for="TagIds">Tags</label>
+                <select class="form-control" asp-for="TagIds" asp-items="new SelectList(ViewBag.Tags,nameof(Tag.Id), nameof(Tag.Name))">
+                    <option>Select Tags</option>
+                </select>
+                <span class="text text-danger" asp-validation-for="TagIds"></span>
             </div>
             <div class="custom-file mb-3">
                 <input asp-for="MainFile" class="custom-file-input" required>

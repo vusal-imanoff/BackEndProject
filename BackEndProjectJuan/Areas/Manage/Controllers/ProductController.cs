@@ -1,6 +1,7 @@
 ﻿using BackEndProjectJuan.DAL;
 using BackEndProjectJuan.Extensions;
 using BackEndProjectJuan.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,8 @@ using System.Threading.Tasks;
 namespace BackEndProjectJuan.Areas.Manage.Controllers
 {
     [Area("manage")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
+
     public class ProductController : Controller
     {
         private readonly AppDbContext _context;
@@ -39,6 +42,7 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
             ViewBag.Brands = await _context.Brands.Where(b => !b.IsDeleted).ToListAsync();
             ViewBag.Categories = await _context.Categories.Where(c => !c.IsDeleted).ToListAsync();
             ViewBag.Genders = await _context.Genders.Where(g => !g.IsDeleted).ToListAsync();
+            ViewBag.Tags = await _context.Tags.Where(t => !t.IsDeleted).ToListAsync();
             return View();
         }
         [HttpPost]
@@ -47,6 +51,7 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
             ViewBag.Brands = await _context.Brands.Where(b => !b.IsDeleted).ToListAsync();
             ViewBag.Categories = await _context.Categories.Where(c => !c.IsDeleted).ToListAsync();
             ViewBag.Genders = await _context.Genders.Where(g => !g.IsDeleted).ToListAsync();
+            ViewBag.Tags = await _context.Tags.Where(t => !t.IsDeleted).ToListAsync();
 
             if (!ModelState.IsValid)
             {
@@ -67,6 +72,34 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
                 ModelState.AddModelError("GenderId", "Please Select A Correct Gender");
                 return View();
             }
+            if (product.TagIds != null && product.TagIds.Count > 0)
+            {
+                List<ProductTags> productTags = new List<ProductTags>();
+
+                foreach (int tagId in product.TagIds)
+                {
+                    if (!await _context.Tags.AnyAsync(t => !t.IsDeleted && t.Id == tagId))
+                    {
+                        ModelState.AddModelError("TagIds", $"Tag Id {tagId} Is InCorrec");
+                        return View();
+                    }
+
+                    ProductTags productTag = new ProductTags
+                    {
+                        TagId = tagId
+                    };
+
+                    productTags.Add(productTag);
+                }
+
+                product.ProductTags = productTags;
+            }
+            else
+            {
+                ModelState.AddModelError("TagIds", "Tags Is Requered");
+                return View();
+            }
+
             if (product.MainFile != null)
             {
                 if (product.MainFile.CheckFileContentType("image/jpeg"))
@@ -142,14 +175,17 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
             {
                 return BadRequest();
             }
-            Product product = await _context.Products.Include(p => p.ProductImages).FirstOrDefaultAsync(p => p.Id == id && !p.IsDeleted);
+            Product product = await _context.Products.Include(p=>p.ProductTags).Include(p => p.ProductImages).FirstOrDefaultAsync(p => p.Id == id && !p.IsDeleted);
             if (product == null)
             {
                 return NotFound();
             }
+            product.TagIds =  product.ProductTags.Select(t => t.TagId).ToList();
+
             ViewBag.Brands = await _context.Brands.Where(b => !b.IsDeleted).ToListAsync();
             ViewBag.Categories = await _context.Categories.Where(c => !c.IsDeleted).ToListAsync();
             ViewBag.Genders = await _context.Genders.Where(g => !g.IsDeleted).ToListAsync();
+            ViewBag.Tags = await _context.Tags.Where(t => !t.IsDeleted).ToListAsync();
             return View(product);
         }
         [HttpPost]
@@ -158,6 +194,7 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
             ViewBag.Brands = await _context.Brands.Where(b => !b.IsDeleted).ToListAsync();
             ViewBag.Categories = await _context.Categories.Where(c => !c.IsDeleted).ToListAsync();
             ViewBag.Genders = await _context.Genders.Where(g => !g.IsDeleted).ToListAsync();
+            ViewBag.Tags = await _context.Tags.Where(t => !t.IsDeleted).ToListAsync();
 
             if (!ModelState.IsValid)
             {
@@ -171,7 +208,7 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
             {
                 return BadRequest();
             }
-            Product dbproduct = await _context.Products.Include(p => p.ProductImages).FirstOrDefaultAsync(p => !p.IsDeleted && p.Id == product.Id);
+            Product dbproduct = await _context.Products.Include(p => p.ProductTags).Include(p => p.ProductImages).FirstOrDefaultAsync(p => !p.IsDeleted && p.Id == product.Id);
             if (dbproduct == null)
             {
                 return NotFound();
@@ -191,6 +228,40 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
                 ModelState.AddModelError("GenderId", "Please Select A Correct Gender");
                 return View();
             }
+
+            if (product.TagIds != null && product.TagIds.Count > 0)
+            {
+                if (dbproduct.ProductTags != null && dbproduct.ProductTags.Count() > 0)
+                {
+                    _context.ProductTags.RemoveRange(dbproduct.ProductTags);
+                }
+
+                List<ProductTags> productTags = new List<ProductTags>();
+
+                foreach (int tagId in product.TagIds)
+                {
+                    if (!await _context.Tags.AnyAsync(t => !t.IsDeleted && t.Id == tagId))
+                    {
+                        ModelState.AddModelError("TagIds", $"Tag Id {tagId} Is InCorrec");
+                        return View();
+                    }
+
+                    ProductTags productTag = new ProductTags
+                    {
+                        TagId = tagId
+                    };
+
+                    productTags.Add(productTag);
+                }
+
+                dbproduct.ProductTags = productTags;
+            }
+            else
+            {
+                ModelState.AddModelError("TagIds", "Tags Is Requered");
+                return View();
+            }
+
 
             if (product.MainFile != null)
             {

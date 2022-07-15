@@ -1,6 +1,7 @@
 ﻿using BackEndProjectJuan.DAL;
 using BackEndProjectJuan.Extensions;
 using BackEndProjectJuan.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,8 @@ using System.Threading.Tasks;
 namespace BackEndProjectJuan.Areas.Manage.Controllers
 {
     [Area("manage")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
+
     public class SlidersController : Controller
     {
         private readonly AppDbContext _context;

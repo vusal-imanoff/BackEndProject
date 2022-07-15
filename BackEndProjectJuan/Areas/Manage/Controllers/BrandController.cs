@@ -1,5 +1,6 @@
 ﻿using BackEndProjectJuan.DAL;
 using BackEndProjectJuan.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,6 +11,8 @@ using System.Threading.Tasks;
 namespace BackEndProjectJuan.Areas.Manage.Controllers
 {
     [Area("manage")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
+
     public class BrandController : Controller
     {
         private readonly AppDbContext _context;
@@ -46,9 +49,9 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
                 return View();
             }
             brand.Name = brand.Name.Trim();
-            brand.Createdat = DateTime.UtcNow.AddHours(4);
-            await _context.Brands.AddAsync(brand);
-            await _context.SaveChangesAsync();
+                brand.Createdat = DateTime.UtcNow.AddHours(4);
+                await _context.Brands.AddAsync(brand);
+                await _context.SaveChangesAsync();
 
             return RedirectToAction("index");
         }

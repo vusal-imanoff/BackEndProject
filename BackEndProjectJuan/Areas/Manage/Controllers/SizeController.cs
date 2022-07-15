@@ -1,5 +1,6 @@
 ﻿using BackEndProjectJuan.DAL;
 using BackEndProjectJuan.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace BackEndProjectJuan.Areas.Manage.Controllers
 {   [Area("Manage")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
+
     public class SizeController : Controller
     {
         private readonly AppDbContext _context;

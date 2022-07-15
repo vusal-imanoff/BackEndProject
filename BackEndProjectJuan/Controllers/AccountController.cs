@@ -1,4 +1,5 @@
-﻿using BackEndProjectJuan.Models;
+﻿using BackEndProjectJuan.Interfaces;
+using BackEndProjectJuan.Models;
 using BackEndProjectJuan.ViewModels.AccountViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -14,11 +15,13 @@ namespace BackEndProjectJuan.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
-        public AccountController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        private readonly IEmailService _emailService;
+        public AccountController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IEmailService emailService)
         {
             _roleManager = roleManager;
             _userManager = userManager;
             _signInManager = signInManager;
+            _emailService = emailService;
         }
         [HttpGet]
         public IActionResult Register()
@@ -55,8 +58,16 @@ namespace BackEndProjectJuan.Controllers
             }
 
             await _userManager.AddToRoleAsync(appUser, "Member");
-            //return RedirectToAction("index", "home");
-            return Content("goto email");
+            var code = await _userManager.GenerateEmailConfirmationTokenAsync(appUser);
+            var link = Url.Action(nameof(VerifyEmail), "Account", new { userId = appUser.Id, token = code }, Request.Scheme, Request.Host.ToString());
+            string html = $" Click Here and to be conteniou registration {link}";    
+            await _emailService.SendEmailAsync(registerVM.Email, html);
+            return RedirectToAction(nameof(SendVerifyEmail));
+
+        }
+       public IActionResult SendVerifyEmail()
+        {
+            return View();
         }
 
         public async Task<IActionResult> VerifyEmail(string userId, string token)
@@ -72,7 +83,7 @@ namespace BackEndProjectJuan.Controllers
             }
             await _userManager.ConfirmEmailAsync(appUser, token);
             await _signInManager.SignInAsync(appUser, false);
-            return RedirectToAction("login", "account");
+            return RedirectToAction("index", "home");
         }
 
         [HttpGet]
@@ -91,6 +102,11 @@ namespace BackEndProjectJuan.Controllers
             if (appUser==null)
             {
                 ModelState.AddModelError("", "Email Or Password Is InCorrect");
+                return View();
+            }
+            if (appUser.IsDeActive)
+            {
+                ModelState.AddModelError("", "Your Profile is DeActive");
                 return View();
             }
             Microsoft.AspNetCore.Identity.SignInResult signInResult = await _signInManager.PasswordSignInAsync(appUser,loginVM.Password, loginVM.Remindme, true);

@@ -26,7 +26,7 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
         }
         public async Task<IActionResult> Index(bool? status)
         {
-            List<AppUser> query = await _userManager.Users.Where(u => u.UserName == User.Identity.Name).ToListAsync();
+            List<AppUser> query = await _userManager.Users.ToListAsync();
             if (status != null)
             {
                 query = query.Where(q => q.IsDeActive == status).ToList();
@@ -80,6 +80,76 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
                 return View();
             }
             return RedirectToAction("index", "user", new { area = "manage" });
+        }
+        [HttpGet]
+        public async Task<IActionResult> ResetPassword(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return BadRequest();
+            }
+            AppUser appUser = await _userManager.FindByIdAsync(id);
+            if (appUser==null)
+            {
+                return NotFound();
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(string id, ResetPasswordVM resetPasswordVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return BadRequest();
+            }
+            AppUser appUser = await _userManager.FindByIdAsync(id);
+            if (appUser==null)
+            {
+                return NotFound();
+            }
+            string token = await _userManager.GeneratePasswordResetTokenAsync(appUser);
+
+            await _userManager.ResetPasswordAsync(appUser, token, resetPasswordVM.Password);
+
+            return RedirectToAction("index");
+
+        }
+
+        public async Task<IActionResult> DeActive(string id)
+        {
+            if (id == null) return BadRequest();
+
+            AppUser appUser = await _userManager.FindByIdAsync(id);
+
+            if (appUser == null) return NotFound();
+            appUser.IsDeActive = true;
+            
+            await _context.SaveChangesAsync();
+
+
+
+            return PartialView("_UserIndexPartial", await _userManager.Users.ToListAsync());
+        }
+
+        public async Task<IActionResult> Activate(string id)
+        {
+            if (id == null) return BadRequest();
+
+            AppUser appUser = await _userManager.FindByIdAsync(id);
+
+            if (appUser == null) return NotFound();
+            appUser.IsDeActive = false;
+
+            await _context.SaveChangesAsync();
+
+
+
+            return PartialView("_UserIndexPartial", await _userManager.Users.ToListAsync());
         }
     }
 }

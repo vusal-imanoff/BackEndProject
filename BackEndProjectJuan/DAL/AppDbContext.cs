@@ -24,5 +24,7 @@ namespace BackEndProjectJuan.DAL
         public DbSet<ProductItems> ProductItems { get; set; }
         public DbSet<Setting> Settings { get; set; }
         public DbSet<Gender> Genders { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<ProductTags> ProductTags { get; set; }
     }
 }

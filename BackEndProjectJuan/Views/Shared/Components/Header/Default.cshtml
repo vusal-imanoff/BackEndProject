@@ -1,6 +1,12 @@
-﻿ @model IDictionary<string,string>
-    
-    <!-- Start Header Area -->
+﻿@model IDictionary<string, string> 
+
+@inject ILayoutService Layoutservice
+
+@{
+           List<BasketVM> basketVMs = await Layoutservice.GetBasketAsync();
+}
+
+<!-- Start Header Area -->
 <header class="header-area">
     <!-- main header start -->
     <div class="main-header d-none d-lg-block">
@@ -10,7 +16,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="welcome-message">
-                            <p>@Model.FirstOrDefault(m=>m.Key=="Welcome").Value</p>
+                            <sp>@Model.FirstOrDefault(m => m.Key == "Welcome").Value</sp>
                         </div>
                     </div>
                     <div class="col-lg-6 text-right">
@@ -111,7 +117,7 @@
                                                     <ul>
                                                         <li><a href="my-account.html">my-account</a></li>
                                                         <li><a href="login-register.html">login-register</a></li>
-                                                        <li><a href="contact-us.html">contact us</a></li>
+                                                        <li><a asp-controller="contact" asp-action="index">contact us</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -159,7 +165,7 @@
                                                 <li><a href="blog-details-left-sidebar.html">blog details left sidebar</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact-us.html">Contact us</a></li>
+                                        <li><a asp-controller="contact" asp-action="index">Contact us</a></li>
                                     </ul>
                                 </nav>
                                 <!-- main menu navbar end -->
@@ -182,24 +188,29 @@
                                             <i class="ion-ios-gear-outline"></i>
                                         </a>
                                         <ul class="dropdown-list">
-                                            @if (User.Identity.IsAuthenticated)
-                                            {
-                                                <li><a>@User.Identity.Name</a></li>
-                                                <li><a asp-controller="account" asp-action="logout">Logout</a></li>
+                                            @{ if (User.Identity.IsAuthenticated && User.IsInRole("SuperAdmin") && User.IsInRole("Admin"))
+                                                {
+                                                    <li><a asp-controller="account" asp-action="logout">Logout</a></li>
+                                                }
+                                                if (User.Identity.IsAuthenticated)
+                                                {
+                                                    <li><a>@User.Identity.Name</a></li>
+                                                    <li><a asp-controller="account" asp-action="logout">Logout</a></li>
 
-                                            }
-                                            else
-                                            {
-                                                <li><a asp-controller="account" asp-action="login">login</a></li>
-                                                <li><a asp-controller="account" asp-action="register">register</a></li>
-                                                <li><a href="my-account.html">my account</a></li>
+                                                }
+                                                else
+                                                {
+                                                    <li><a asp-controller="account" asp-action="login">login</a></li>
+                                                    <li><a asp-controller="account" asp-action="register">register</a></li>
+                                                    <li><a href="my-account.html">my account</a></li>
+                                                }
                                             }
                                         </ul>
                                     </li>
                                     <li>
                                         <a href="#" class="minicart-btn">
                                             <i class="ion-bag"></i>
-                                            <div class="notification">2</div>
+                                            <div class="notification">0@*@basketVMs.Count*@</div>
                                         </a>
                                     </li>
                                 </ul>

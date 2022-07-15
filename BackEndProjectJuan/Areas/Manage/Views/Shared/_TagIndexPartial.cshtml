@@ -1,0 +1,18 @@
+﻿@model List<Tag>
+@{
+    int no = 0;
+}
+
+@foreach (Tag tag in Model)
+{
+    no++;
+    <tr>
+        <td>@no</td>
+        <td>@tag.Name</td>
+        <td class="text @(tag.IsDeleted ? "text-danger":"text-success")">@(tag.IsDeleted ? "DeActive":"Active")</td>
+        <td>
+            <a class="btn btn-warning " asp-area="manage" asp-controller="tag" asp-action="update" asp-route-id="@tag.Id">Update</a>
+            <a class="btn @(tag.IsDeleted ? "btn-primary":"btn-danger") deleteandrestorebtn" asp-area="manage" asp-controller="tag" asp-action="@(tag.IsDeleted ? "restore":"delete")" asp-route-id="@tag.Id">@(tag.IsDeleted ? "ReStore":"Delete")</a>
+        </td>
+    </tr>
+}

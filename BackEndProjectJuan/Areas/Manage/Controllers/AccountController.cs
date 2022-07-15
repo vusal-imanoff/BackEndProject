@@ -11,28 +11,27 @@ using System.Threading.Tasks;
 namespace BackEndProjectJuan.Areas.Manage.Controllers
 {
     [Area("manage")]
-    //[Authorize(Roles = "SuperAdmin")]
-
     public class AccountController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signManager;
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signManager)
+        public AccountController(UserManager<
+AppUser> userManager, SignInManager<AppUser> signManager)
         {
             _userManager = userManager;
             _signManager = signManager;
         }
-       
+        
         [HttpGet]
         public IActionResult Login()
         {
-            if (User.Identity.IsAuthenticated)
+            if (User.Identity.IsAuthenticated && User.IsInRole("SuperAdmin"))
             {
-                return RedirectToAction("home", "dashboard", new { area = "manage" });
+                return Redirect("/manage/dashboard/index");
             }
             else
             {
-                return RedirectToAction("login", "account", new { area = "manage" });
+                return View();
 
             }
         }
@@ -45,24 +44,24 @@ namespace BackEndProjectJuan.Areas.Manage.Controllers
             }
             AppUser appUser = await _userManager.FindByEmailAsync(loginVM.Email);
 
-            if (appUser==null)
+            if (appUser == null)
             {
                 ModelState.AddModelError("", "Email or Password is Incorrect");
                 return View();
             }
-            if (!await _userManager.CheckPasswordAsync(appUser,loginVM.Password))
+            if (!await _userManager.CheckPasswordAsync(appUser, loginVM.Password))
             {
                 ModelState.AddModelError("", "Email or Password is Incorrect");
                 return View();
             }
             await _signManager.PasswordSignInAsync(appUser, loginVM.Password, loginVM.Remindme, true);
 
-            return RedirectToAction("index", "dashboard", new { area = "manage" });
+            return RedirectToAction("index", "dashboard", "manage");
         }
         public async Task<IActionResult> Logout()
         {
             await _signManager.SignOutAsync();
-            return RedirectToAction("login", "account", new { area = "manage" });
+            return RedirectToAction(nameof(Login));
         }
     }
 }

@@ -52,9 +52,6 @@ namespace BackEndProjectJuan.Migrations
                     b.Property<bool>("IsDeActive")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -242,6 +239,9 @@ namespace BackEndProjectJuan.Migrations
                     b.Property<decimal>("DiscountPrice")
                         .HasColumnType("money");
 
+                    b.Property<decimal>("Extax")
+                        .HasColumnType("money");
+
                     b.Property<string>("FacebookUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -368,6 +368,28 @@ namespace BackEndProjectJuan.Migrations
                     b.ToTable("ProductSocialAddresses");
                 });
 
+            modelBuilder.Entity("BackEndProjectJuan.Models.ProductTags", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TagId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("TagId");
+
+                    b.ToTable("ProductTags");
+                });
+
             modelBuilder.Entity("BackEndProjectJuan.Models.Setting", b =>
                 {
                     b.Property<int>("Id")
@@ -479,6 +501,26 @@ namespace BackEndProjectJuan.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SocialAddresses");
+                });
+
+            modelBuilder.Entity("BackEndProjectJuan.Models.Tag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -672,6 +714,21 @@ namespace BackEndProjectJuan.Migrations
                     b.HasOne("BackEndProjectJuan.Models.SocialAddress", "SocialAddress")
                         .WithMany("ProductSocialAddresses")
                         .HasForeignKey("SocialAddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BackEndProjectJuan.Models.ProductTags", b =>
+                {
+                    b.HasOne("BackEndProjectJuan.Models.Product", "Product")
+                        .WithMany("ProductTags")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BackEndProjectJuan.Models.Tag", "Tag")
+                        .WithMany("ProductTags")
+                        .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

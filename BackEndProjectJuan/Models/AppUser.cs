@@ -22,7 +22,6 @@ namespace BackEndProjectJuan.Models
         [Required]
         public int Age { get; set; }
         public bool IsAdmin { get; set; }
-        public bool IsDeleted { get; set; }
         public bool IsDeActive { get; set; }
         [NotMapped]
         public string Role { get; set; }

@@ -22,6 +22,9 @@ namespace BackEndProjectJuan.Models
         [Required]
         [Column(TypeName = "money")]
         public double DiscountPrice { get; set; }
+        [Required]
+        [Column(TypeName = "money")]
+        public double Extax { get; set; }
         public int Count { get; set; }
         public bool Availability { get; set; }
         [Required]
@@ -48,10 +51,13 @@ namespace BackEndProjectJuan.Models
         public Nullable<DateTime> DeletedAt { get; set; }
 
         public List<ProductImages> ProductImages  { get; set; }
+        public IEnumerable<ProductTags> ProductTags { get; set; }
         public IEnumerable<ProductSocialAddress> ProductSocialAddresses { get; set; }
         [NotMapped]
         public IFormFile MainFile { get; set; }
         [NotMapped]
         public List<IFormFile> Files { get; set; }
+        [NotMapped]
+        public List<int> TagIds { get; set; }
     }
 }

@@ -48,7 +48,7 @@
                 </a>
             </li>
 
-            @if(User.IsInRole("SuperAdmin"))
+            @if (User.IsInRole("SuperAdmin"))
             {
                 <!-- Nav Item - Tags -->
                 <li class="nav-item active">
@@ -128,6 +128,14 @@
                 <a class="nav-link" asp-area="manage" asp-controller="socialaddress" asp-action="index">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Social Addresses</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Tags -->
+            <li class="nav-item active">
+                <a class="nav-link" asp-area="manage" asp-controller="tag" asp-action="index">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Tags</span>
                 </a>
             </li>
         </ul>
