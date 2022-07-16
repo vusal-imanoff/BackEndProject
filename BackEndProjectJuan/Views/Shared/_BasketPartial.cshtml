@@ -7,7 +7,7 @@
 }
 
     <!-- offcanvas mini cart start -->
-<div class="offcanvas-minicart-wrapper">
+<div class="offcanvas-minicart-wrapper header-cart">
     <div class="minicart-inner">
         <div class="offcanvas-overlay"></div>
         <div class="minicart-inner-content">
@@ -34,7 +34,7 @@
                                         <span class="cart-price">$@basket.Price.ToString("F2")</span>
                                     </p>
                                 </div>
-                                <button class="minicart-remove"><i class="ion-android-close"></i></button>
+                                <a asp-controller="basket" asp-action="DeleteFromBasket" asp-route-id="@basket.Id" class="minicart-remove deletebasket"><i class="ion-android-close"></i></a>
                             </li>
                         }
                     </ul>

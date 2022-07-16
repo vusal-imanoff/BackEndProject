@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BackEndProjectJuan.DAL;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -10,18 +12,22 @@ namespace BackEndProjectJuan.Controllers
 {
     public class HomeController : Controller
     {
-       
-
-        public IActionResult Index()
+        private readonly AppDbContext _context;
+        public HomeController(AppDbContext context)
         {
-            return View();
+            _context = context;
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            ViewBag.Sliders = _context.Sliders;
+
+            return View(await _context.Products.ToListAsync());
+
         }
 
-       
+
+
+
     }
 }

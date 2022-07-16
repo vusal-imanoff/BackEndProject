@@ -43,6 +43,91 @@ namespace BackEndProjectJuan.Controllers
             }
             return PartialView("_BasketPartial", await _getBasketAsync(basket));
         }
+        
+        public async Task<IActionResult> AddToBasket(int? id)
+        {
+            if (id==null)
+            {
+                return BadRequest();
+            }
+            Product product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
+            if (product==null)
+            {
+                return NotFound();
+            }
+            List<BasketVM> basketVMs = null;
+            string basket = HttpContext.Request.Cookies["basket"];
+
+            if (!string.IsNullOrWhiteSpace(basket))
+            {
+                basketVMs = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
+                if (basketVMs.Exists(e=>e.Id==id))
+                {
+                    basketVMs.Find(f => f.Id == id).Count++;
+                }
+                else
+                {
+                    BasketVM basketVM = new BasketVM
+                    {
+                        Id = (int)id,
+                        Count = 1
+                    };
+
+                    basketVMs.Add(basketVM);
+                }
+            }
+            else
+            {
+                basketVMs = new List<BasketVM>();
+                BasketVM basketVM = new BasketVM
+                {
+                    Id = (int)id,
+                    Count = 1
+                };
+
+                basketVMs.Add(basketVM);
+            }
+
+            string item = JsonConvert.SerializeObject(basketVMs);
+            HttpContext.Response.Cookies.Append("basket", item);
+
+            return PartialView("_BasketPartial", await _getBasketAsync(item));
+        }
+
+        public async Task<IActionResult> DeleteFromBasket(int? id)
+        {
+            if (id==null)
+            {
+                return BadRequest();
+            }
+
+            if (!await _context.Products.AnyAsync(p=>p.Id==id))
+            {
+                return NotFound();
+            }
+
+            string basket = HttpContext.Request.Cookies["basket"];
+            if (!string.IsNullOrWhiteSpace(basket))
+            {
+                List<BasketVM> basketVMs = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
+
+                BasketVM basketVM = basketVMs.FirstOrDefault(b => b.Id == id);
+                if (basketVM==null)
+                {
+                    return NotFound();
+                }
+                basketVMs.Remove(basketVM);
+
+                basket = JsonConvert.SerializeObject(basketVMs);
+                HttpContext.Response.Cookies.Append("basket", basket);
+
+                return PartialView("_BasketPartial", await _getBasketAsync(basket));
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
 
         private async Task<List<BasketVM>> _getBasketAsync(string cookie)
         {

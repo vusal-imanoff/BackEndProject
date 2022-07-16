@@ -47,11 +47,10 @@ namespace BackEndProjectJuan
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
             }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
+                
 
-
-
+            services.AddScoped<IEmailService, EmailService>(); 
             services.AddScoped<ILayoutService, LayoutService>();
-            services.AddScoped<IEmailService, EmailService>();
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromSeconds(10);

@@ -21,20 +21,26 @@
 	});
 
 	// offcanvas search form active start
-	$(".offcanvas-btn").on('click', function(){
+	$(".offcanvas-btn").on('click', function () {
 		$("body").addClass('fix');
 		$(".offcanvas-search-inner").addClass('show')
 	})
 
-	$(".minicart-btn").on('click', function(){
+	$(".minicart-btn").on('click', function () {
 		$("body").addClass('fix');
 		$(".minicart-inner").addClass('show')
 	})
 
-	$(".offcanvas-close, .minicart-close,.offcanvas-overlay").on('click', function(){
+	$(".offcanvas-close, .minicart-close,.offcanvas-overlay").on('click', function () {
 		$("body").removeClass('fix');
 		$(".offcanvas-search-inner, .minicart-inner").removeClass('show')
 	})
+
+
+	//$(".offcanvas-close, .minicart-close, header-cart,.offcanvas-overlay").on('click', function(){
+	//	$("body").removeClass('fix');
+	//	$(".offcanvas-search-inner, .minicart-inner").removeClass('show')
+	//})
 
 	// nice select active start
 	$('select').niceSelect();

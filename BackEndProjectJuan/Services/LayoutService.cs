@@ -15,8 +15,8 @@ namespace BackEndProjectJuan.Services
     public class LayoutService : ILayoutService
     {
         private readonly AppDbContext _context;
-        private readonly HttpContextAccessor _httpContext;
-        public LayoutService(AppDbContext context, HttpContextAccessor httpContext)
+        private readonly IHttpContextAccessor _httpContext;
+        public LayoutService(AppDbContext context, IHttpContextAccessor httpContext)
         {
             _context=context;
             _httpContext = httpContext;
