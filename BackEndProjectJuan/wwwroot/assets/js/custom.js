@@ -32,7 +32,10 @@ $(document).ready(function () {
 
         fetch($(this).attr('href'))
             .then(res => res.text())
-            .then(data => { $('.header-cart').html(data) });
+            .then(data => {
+                console.log(data)
+                $('.header-cart').html(data)
+            });
     })
 
     $(document).on('click', '.deletebasket', function (e) {
@@ -45,10 +48,76 @@ $(document).ready(function () {
             .then(res => res.text())
             .then(data => { $('.header-cart').html(data) });
     })
-    $(document).on('click', '.minicart-btn', function (e) {
-        console.log('salam')
+
+    $(document).on('click', '.deletefromcart', function (e) {
+        e.preventDefault();
+
+        fetch($(this).attr('href'))
+            .then(res => res.text())
+            .then(data => {
+                $('.basketcontainer').html(data);
+                fetch('/basket/getbasket')
+                    .then(res => res.text())
+                    .then(data => { $('.header-cart').html(data) });
+            })
     })
-    
+
+    $(document).on('click', '.subCount', function (e) {
+        e.preventDefault();
+
+        let count = $(this).next().val();
+
+        if (count > 1) {
+            count--;
+            $(this).next().val(count)
+
+            let url = $(this).attr('href') + '?count=' + count;
+            console.log(url)
+            fetch(url)
+                .then(res => res.text())
+                .then(data => {
+                    $('.basketcontainer').html(data);
+                    fetch('/basket/getbasket')
+                        .then(res => res.text())
+                        .then(data => { $('.header-cart').html(data) });
+                })
+        }
+    })
+    $(document).on('click', '.addCount', function (e) {
+        e.preventDefault();
+
+        let count = $(this).prev().val();
+
+        if (count < 1) {
+            count = 1
+        }
+
+        count++;
+        $(this).prev().val(count)
+
+        let url = $(this).attr('href') + '?count=' + count;
+        console.log(url)
+        fetch(url)
+            .then(res => res.text())
+            .then(data => {
+                $('.basketcontainer').html(data);
+                fetch('/basket/getbasket')
+                    .then(res => res.text())
+                    .then(data => { $('.header-cart').html(data) });
+            })
+    })
+
+    $(document).on('click', '.productModal', function (e) {
+        e.preventDefault();
+        console.log($(this).attr('href'))
+        fetch($(this).attr('href'))
+            .then(res => res.text())
+            .then(data => {
+                $('.modal-body').html(data);
+
+
+            })
+    })
 
 
     //$(".offcanvas-close, .minicart-close,.offcanvas-overlay").on('click', function () {

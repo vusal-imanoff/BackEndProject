@@ -128,7 +128,66 @@ namespace BackEndProjectJuan.Controllers
                 return BadRequest();
             }
         }
+        public async Task<IActionResult> UpdateFromCart(int? id, int count = 1)
+        {
 
+            string basket = Request.Cookies["basket"];
+
+            List<BasketVM> basketVMs = null;
+
+            if (!string.IsNullOrWhiteSpace(basket))
+            {
+                basketVMs = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
+
+                BasketVM basketVM = basketVMs.FirstOrDefault(b => b.Id == id);
+
+                if (basketVM == null) return NotFound();
+
+                basketVM.Count = count;
+
+                basket = JsonConvert.SerializeObject(basketVMs);
+
+                Response.Cookies.Append("basket", basket);
+            }
+            else
+            {
+                return BadRequest();
+            }
+
+            return PartialView("_BasketIndexPartial", await _getBasketAsync(basket));
+        }
+
+        public async Task<IActionResult> DeleteFromCart(int? id)
+        {
+            if (id==null)
+            {
+                return BadRequest();
+            }
+            if (!await _context.Products.AnyAsync(p => p.Id == id)) return NotFound();
+
+            string coockie = HttpContext.Request.Cookies["basket"];
+
+            if (!string.IsNullOrWhiteSpace(coockie))
+            {
+                List<BasketVM> basketVMs = JsonConvert.DeserializeObject<List<BasketVM>>(coockie);
+
+                BasketVM basketVM = basketVMs.FirstOrDefault(b => b.Id == id);
+
+                if (basketVM == null) return NotFound();
+
+                basketVMs.Remove(basketVM);
+
+                coockie = JsonConvert.SerializeObject(basketVMs);
+
+                HttpContext.Response.Cookies.Append("basket", coockie);
+
+                return PartialView("_BasketIndexPartial", await _getBasketAsync(coockie));
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
         private async Task<List<BasketVM>> _getBasketAsync(string cookie)
         {
             List<BasketVM> basketVMs = null;

@@ -16,9 +16,64 @@ namespace BackEndProjectJuan.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index(int pageIndex=1)
         {
-            return View();
+            List<Product> products = await _context.Products.ToListAsync();
+
+            if (products==null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.ProductCount = (int)Math.Ceiling((decimal)products.Count/9);
+            ViewBag.PageIndex = pageIndex;
+            ViewBag.PageIndexCount = 3;
+            return View(products.OrderByDescending(p => p.Id).Skip((pageIndex - 1) * 9).Take(9).ToList());
+        }
+
+        public async Task<IActionResult> Detail(int? id)
+        {
+            if (id==null)
+            {
+                return BadRequest();
+            }
+
+            Product product = await _context.Products
+                .Include(p => p.Brand)
+                .Include(p => p.Category)
+                .Include(p => p.Gender)
+                .Include(p => p.ProductImages)
+                .Include(p => p.ProductTags).ThenInclude(p => p.Tag)
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return View(product);
+
+        }
+        public async Task<IActionResult> ProductModal(int? id)
+        {
+            if (id == null)
+            {
+                return BadRequest();
+            }
+
+            Product product = await _context.Products
+                .Include(p => p.Brand)
+                .Include(p => p.Category)
+                .Include(p => p.Gender)
+                .Include(p => p.ProductImages)
+                .Include(p => p.ProductTags).ThenInclude(p => p.Tag)
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return PartialView("_ProductModalPartial", product);
+
         }
 
         public async Task<IActionResult> Search(string search)

@@ -214,3 +214,9 @@ C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcorea
 C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Index.cshtml.g.cs
 C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BasketPartial.cshtml.g.cs
 C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_HomeOurProductPartial.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Views\Basket\Index.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BasketIndexPartial.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Views\Product\Index.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProductIndexPartial.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Views\Product\Detail.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProductModalPartial.cshtml.g.cs
