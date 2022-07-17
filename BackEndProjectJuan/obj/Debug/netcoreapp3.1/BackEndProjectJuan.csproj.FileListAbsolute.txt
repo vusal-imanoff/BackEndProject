@@ -220,3 +220,14 @@ C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcorea
 C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProductIndexPartial.cshtml.g.cs
 C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Views\Product\Detail.cshtml.g.cs
 C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProductModalPartial.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Shared\_BlogIndexPartial.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Blog\Index.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Blog\Create.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Blog\Update.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Index.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BlogIndexPartial.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Detail.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Views\Account\Profile.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProfilePartial.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Views\Order\Index.cshtml.g.cs
+C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_OrderPartial.cshtml.g.cs

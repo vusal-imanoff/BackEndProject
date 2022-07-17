@@ -42,13 +42,27 @@ using BackEndProjectJuan.ViewModels.Basket;
 #nullable disable
 #nullable restore
 #line 6 "C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\Views\_ViewImports.cshtml"
+using BackEndProjectJuan.ViewModels.Home;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 7 "C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\Views\_ViewImports.cshtml"
+using BackEndProjectJuan.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 8 "C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\Views\_ViewImports.cshtml"
 using BackEndProjectJuan.Interfaces;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3cfc168059514940ff7a9bb45aba0d8a3cffe629", @"/Views/Contact/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0527f085d4f9c49a1133377e220ffda940ec3637", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"382ac41950e9f9c47599b6f31444d44ea709f438", @"/Views/_ViewImports.cshtml")]
     public class Views_Contact_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IDictionary<string, string>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "home", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -95,7 +109,7 @@ using BackEndProjectJuan.Interfaces;
                             <h1 class=""breadcrumb-title"">Contact Us</h1>
                             <ul class=""breadcrumb"">
                                 <li class=""breadcrumb-item"">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3cfc168059514940ff7a9bb45aba0d8a3cffe6296638", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3cfc168059514940ff7a9bb45aba0d8a3cffe6297055", async() => {
                 WriteLiteral("Home");
             }
             );
@@ -130,7 +144,7 @@ using BackEndProjectJuan.Interfaces;
                     <div class=""contact-message"">
                         <h2 class=""contact-title"">tell us your project</h2>
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3cfc168059514940ff7a9bb45aba0d8a3cffe6298667", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3cfc168059514940ff7a9bb45aba0d8a3cffe6299084", async() => {
                 WriteLiteral(@"
                             <div class=""row"">
                                 <div class=""col-lg-6 col-md-6 col-sm-6"">

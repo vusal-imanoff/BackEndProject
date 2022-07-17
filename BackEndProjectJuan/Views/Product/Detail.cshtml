@@ -70,10 +70,12 @@
                                     @Model.Description
                                 </p>
                                 <div class="quantity-cart-box d-flex align-items-center mb-20">
-                                    <div class="quantity">
-                                        <div class="pro-qty"><input type="text" value="1"></div>
+                                    <div class="quantity mt-15 d-flex">
+                                        <a asp-controller="basket" asp-action="UpdateFromCart" asp-route-id="@Model.Id" class="subProductCount btn border"><i class="fal fa-minus"></i></a>
+                                        <input type="text" value="1" />
+                                        <a asp-controller="basket" asp-action="UpdateFromCart" asp-route-id="@Model.Id" class="addProductCount btn border"><i class="fal fa-plus"></i></a>
                                     </div>
-                                    <a href="cart.html" class="btn btn-default">Add To Cart</a>
+                                    <a asp-controller="basket" asp-action="addtobasket" asp-route-id="@Model.Id" class="btn btn-default addbasket">Add To Cart</a>
                                 </div>
                                 <div class="availability mb-20">
                                     <h5 class="cat-title">Availability:</h5>

@@ -1,8 +1,10 @@
 ﻿using BackEndProjectJuan.Interfaces;
 using BackEndProjectJuan.Models;
 using BackEndProjectJuan.ViewModels.AccountViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -129,6 +131,85 @@ namespace BackEndProjectJuan.Controllers
             return RedirectToAction("login", "account");
         }
 
+        [HttpGet]
+        [Authorize(Roles ="Member")]
+        public async Task<IActionResult> Profile()
+        {
+
+            AppUser app = await _userManager.Users.Include(u=>u.Orders).ThenInclude(u=>u.OrderItems).ThenInclude(u=>u.Product).FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
+
+            ProfileVM profileVM = new ProfileVM
+            {
+                Name = app.Name,
+                SurName = app.Surname,
+                FatherName = app.FatherName,
+                Age = app.Age,
+                UserName = app.UserName,
+                Email = app.Email
+            };
+
+            MemberVM memberVM = new MemberVM
+            {
+                ProfileVM = profileVM,
+                Orders = app.Orders.ToList()
+            };
+            return View(memberVM);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(ProfileVM profileVM)
+        {
+            if (!ModelState.IsValid) return View("Profile");
+            AppUser appUser =await _userManager.FindByNameAsync(User.Identity.Name);
+            appUser.Name = profileVM.Name;
+            appUser.Surname = profileVM.SurName;
+            appUser.Email = profileVM.Email;
+            appUser.FatherName = profileVM.FatherName;
+            appUser.UserName = profileVM.UserName;
+            appUser.Age = profileVM.Age;
+
+            IdentityResult identity = await _userManager.UpdateAsync(appUser);
+
+            if (!identity.Succeeded)
+            {
+                foreach (var item in identity.Errors)
+                {
+                    ModelState.AddModelError("", item.Description);
+                }
+                return View("profile");
+
+            }
+
+            if (profileVM.CurrentPassword!=null)
+            {
+                if (profileVM.NewPassword==null)
+                {
+                    ModelState.AddModelError("NewPassword", "Is Requered");
+                    ModelState.AddModelError("ConfirmPassword", "Is Requered");
+
+                    return View("Profile");
+                }
+
+                if (!await _userManager.CheckPasswordAsync(appUser,profileVM.CurrentPassword))
+                {
+                    ModelState.AddModelError("CurrentPassword", "Current Pssword Is InCorrect.");
+                    return View("profile");
+                }
+                identity = await _userManager.ChangePasswordAsync(appUser, profileVM.CurrentPassword, profileVM.NewPassword);
+
+                if (!identity.Succeeded)
+                {
+                    foreach (var item in identity.Errors)
+                    {
+                        ModelState.AddModelError("", item.Description);
+                    }
+
+                    return View("Profile");
+                }
+
+            }
+            return RedirectToAction("Profile");
+        }
         #region CreateRole
 
         //public async Task<IActionResult> CreateRole()

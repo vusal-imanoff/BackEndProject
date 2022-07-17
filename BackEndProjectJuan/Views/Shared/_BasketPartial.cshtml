@@ -7,14 +7,14 @@
 }
 
     <!-- offcanvas mini cart start -->
-<div class="offcanvas-minicart-wrapper">
+<div class="offcanvas-minicart-wrapper ">
     <div class="minicart-inner ">
-        <div class="offcanvas-overlay"></div>
+        <div class="offcanvas-overlay header-cart"></div>
         <div class="minicart-inner-content">
             <div class="minicart-close">
                 <i class="ion-android-close"></i>
             </div>
-            <div class="minicart-content-box header-cart">
+            <div class="minicart-content-box ">
                 <div class="minicart-item-wrapper">
                     <ul>
                         @foreach (BasketVM basket in Model)
@@ -63,7 +63,7 @@
 
                 <div class="minicart-button">
                     <a asp-controller="basket" asp-action="index"><i class="fa fa-shopping-cart"></i> view cart</a>
-                    <a href="cart.html"><i class="fa fa-share"></i> checkout</a>
+                    <a asp-controller="order" asp-action="index"><i class="fa fa-share"></i> checkout</a>
                 </div>
             </div>
         </div>

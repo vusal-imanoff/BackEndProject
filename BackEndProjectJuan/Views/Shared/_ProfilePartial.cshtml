@@ -1,0 +1,66 @@
+﻿@model ProfileVM
+
+<div class="account-details-form">
+    <form method="post" asp-controller="account" asp-action="update">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="single-input-item">
+                    <label asp-for="Name" class="required">First Name</label>
+                    <input id="first-name" asp-for="Name" />
+                    <span class="text text-danger" asp-validation-for="Name"></span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="single-input-item">
+                    <label asp-for="SurName" class="required">Last Name</label>
+                    <input type="text" id="last-name" asp-for="SurName" />
+                    <span class="text text-danger" asp-validation-for="Name"></span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="single-input-item">
+                    <label asp-for="FatherName" class="required">Father Name</label>
+                    <input type="text" id="last-name" asp-for="FatherName" />
+                    <span class="text text-danger" asp-validation-for="FatherName"></span>
+                </div>
+            </div>
+        </div>
+        <div class="single-input-item">
+            <label asp-for="UserName" class="required">Display Name</label>
+            <input type="text" id="display-name" asp-for="UserName" />
+            <span class="text text-danger" asp-validation-for="UserName"></span>
+        </div>
+        <div class="single-input-item">
+            <label asp-for="Email" class="required">Email Addres</label>
+            <input type="email" id="email" asp-for="Email" />
+            <span class="text text-danger" asp-validation-for="Email"></span>
+        </div>
+        <fieldset>
+            <legend>Password change</legend>
+            <div class="single-input-item">
+                <label asp-for="CurrentPassword" class="required">Current Password</label>
+                <input type="password" id="current-pwd" asp-for="CurrentPassword" />
+                <span class="text text-danger" asp-validation-for="CurrentPassword"></span>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="single-input-item">
+                        <label asp-for="NewPassword" class="required">New Password</label>
+                        <input type="password" id="new-pwd" asp-for="NewPassword" />
+                        <span class="text text-danger" asp-validation-for="NewPassword"></span>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="single-input-item">
+                        <label asp-for="ConfirmPassword" class="required">Confirm Password</label>
+                        <input type="password" id="confirm-pwd" asp-for="ConfirmPassword" />
+                        <span class="text text-danger" asp-validation-for="ConfirmPassword"></span>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="single-input-item">
+            <button class="check-btn sqr-btn ">Save Changes</button>
+        </div>
+    </form>
+</div>

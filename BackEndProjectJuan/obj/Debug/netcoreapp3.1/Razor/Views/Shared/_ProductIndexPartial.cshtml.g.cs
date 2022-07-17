@@ -42,13 +42,27 @@ using BackEndProjectJuan.ViewModels.Basket;
 #nullable disable
 #nullable restore
 #line 6 "C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\Views\_ViewImports.cshtml"
+using BackEndProjectJuan.ViewModels.Home;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 7 "C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\Views\_ViewImports.cshtml"
+using BackEndProjectJuan.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 8 "C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\Views\_ViewImports.cshtml"
 using BackEndProjectJuan.Interfaces;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4aaf837ad94e89569fbb00fabf119b91cc09714e", @"/Views/Shared/_ProductIndexPartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0527f085d4f9c49a1133377e220ffda940ec3637", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"382ac41950e9f9c47599b6f31444d44ea709f438", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__ProductIndexPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Product>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "product", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -97,7 +111,7 @@ using BackEndProjectJuan.Interfaces;
 #line hidden
 #nullable disable
             WriteLiteral("    <div class=\"col-lg-4 col-sm-6\">\r\n        <!-- product grid item start -->\r\n        <div class=\"product-item mb-53\">\r\n            <div class=\"product-thumb\">\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4aaf837ad94e89569fbb00fabf119b91cc09714e7922", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4aaf837ad94e89569fbb00fabf119b91cc09714e8339", async() => {
                 WriteLiteral("\r\n                    <img");
                 BeginWriteAttribute("src", " src=\"", 345, "\"", 384, 2);
                 WriteAttributeValue("", 351, "assets/img/product/", 351, 19, true);
@@ -143,7 +157,7 @@ WriteAttributeValue("", 370, product.Image, 370, 14, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n            </div>\r\n            <div class=\"product-content\">\r\n                <h5 class=\"product-name\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4aaf837ad94e89569fbb00fabf119b91cc09714e11101", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4aaf837ad94e89569fbb00fabf119b91cc09714e11518", async() => {
 #nullable restore
 #line 16 "C:\Users\user\Documents\BackEndProjectJuan\BackEndProjectJuan\Views\Shared\_ProductIndexPartial.cshtml"
                                                                                           Write(product.Name);
@@ -233,7 +247,7 @@ WriteAttributeValue("", 370, product.Image, 370, 14, false);
 #line hidden
 #nullable disable
             WriteLiteral("                <div class=\"product-action-link\">\r\n                    <a href=\"#\" data-toggle=\"tooltip\" title=\"Wishlist\"><i class=\"ion-android-favorite-outline\"></i></a>\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4aaf837ad94e89569fbb00fabf119b91cc09714e15988", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4aaf837ad94e89569fbb00fabf119b91cc09714e16405", async() => {
                 WriteLiteral("<i class=\"ion-bag\"></i>");
             }
             );
@@ -269,7 +283,7 @@ WriteAttributeValue("", 370, product.Image, 370, 14, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4aaf837ad94e89569fbb00fabf119b91cc09714e18694", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4aaf837ad94e89569fbb00fabf119b91cc09714e19111", async() => {
                 WriteLiteral("\r\n                        <span data-toggle=\"tooltip\"\r\n                              title=\"Quick View\"><i class=\"ion-ios-eye-outline\"></i></span>\r\n                    ");
             }
             );

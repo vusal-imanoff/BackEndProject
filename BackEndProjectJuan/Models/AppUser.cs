@@ -25,5 +25,7 @@ namespace BackEndProjectJuan.Models
         public bool IsDeActive { get; set; }
         [NotMapped]
         public string Role { get; set; }
+
+        public IEnumerable<Order> Orders { get; set; }
     }
 }

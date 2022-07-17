@@ -156,6 +156,34 @@ namespace BackEndProjectJuan.Controllers
 
             return PartialView("_BasketIndexPartial", await _getBasketAsync(basket));
         }
+        public async Task<IActionResult> UpdateFromModal(int? id, int count = 1)
+        {
+
+            string basket = Request.Cookies["basket"];
+
+            List<BasketVM> basketVMs = null;
+
+            if (!string.IsNullOrWhiteSpace(basket))
+            {
+                basketVMs = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
+
+                BasketVM basketVM = basketVMs.FirstOrDefault(b => b.Id == id);
+
+                if (basketVM == null) return NotFound();
+
+                basketVM.Count = count;
+
+                basket = JsonConvert.SerializeObject(basketVMs);
+
+                Response.Cookies.Append("basket", basket);
+            }
+            else
+            {
+                return BadRequest();
+            }
+
+            return PartialView("_ProductModalPartial", await _getBasketAsync(basket));
+        }
 
         public async Task<IActionResult> DeleteFromCart(int? id)
         {
@@ -188,6 +216,21 @@ namespace BackEndProjectJuan.Controllers
                 return BadRequest();
             }
         }
+        //public int returnCount(int id)
+        //{
+        //    string basket = HttpContext.Request.Cookies["basket"];
+        //    List<BasketVM> basketVMs = null;
+        //    if (basket != null)
+        //    {
+        //        basketVMs = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
+        //        if (basketVMs.Exists(e => e.Id == id))
+        //        {
+        //            return basketVMs.Count();
+        //        }
+        //        return basketVMs.Count() + 1;
+        //    }
+        //    return 0;
+        //}
         private async Task<List<BasketVM>> _getBasketAsync(string cookie)
         {
             List<BasketVM> basketVMs = null;

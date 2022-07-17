@@ -21,6 +21,7 @@ namespace BackEndProjectJuan.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.Sliders = _context.Sliders;
+            ViewBag.Blogs = _context.Blogs;
 
             return View(await _context.Products.ToListAsync());
 

@@ -1,0 +1,22 @@
+﻿@model List<Blog>
+@{
+    int no = 0;
+}
+
+@foreach (Blog blog in Model)
+{
+    no++;
+<tr>
+    <td>@no</td>
+    <td>@blog.Name</td>
+    <td><img width="100" src="~/assets/img/blog/@blog.Image" /></td>
+    <td class="text @(blog.IsDeleted ? "text-danger":"text-success")">@(blog.IsDeleted ? "DeActive":"Active")</td>
+    <td>
+        <a class="btn btn-warning " asp-area="manage" asp-controller="blog" asp-action="update" asp-route-id="@blog.Id">Update</a>
+        <a class="btn @(blog.IsDeleted ? "btn-primary":"btn-danger") deleteandrestorebtn" asp-area="manage" asp-controller="blog" asp-action="@(blog.IsDeleted ? "restore":"delete")" asp-route-id="@blog.Id" asp-route-status="@ViewBag.Status">@(blog.IsDeleted ? "ReStore":"Delete")</a>
+    </td>
+    <td>@blog.CreatedAt</td>
+
+</tr>
+    
+}
