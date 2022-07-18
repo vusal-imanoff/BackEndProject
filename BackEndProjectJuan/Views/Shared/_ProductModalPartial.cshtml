@@ -7,7 +7,7 @@
                 @foreach (ProductImages product in Model.ProductImages)
                 {
                     <div class="pro-large-img img-zoom">
-                        <img src="~/assets/img/product-quick/@product.Image" alt="product thumb" />
+                        <img src="~/assets/img/product/@Model.Image" alt="product thumb" />
                     </div>
                 }
             </div>
@@ -41,9 +41,9 @@
                 <p>@Model.Description</p>
                 <div class="quantity-cart-box d-flex align-items-center mb-20">
                     <div class="quantity mt-15 d-flex modalcontainer">
-                        <a asp-controller="basket" asp-action="UpdateFrommodal" asp-route-id="@Model.Id" class="subModalCount btn border"><i class="fal fa-minus"></i></a>
+                        <a asp-controller="basket" asp-action="UpdateFrommodal" asp-route-id="@Model.Id" class="subCount btn border"><i class="fal fa-minus"></i></a>
                         <input type="text" value="1" />
-                        <a asp-controller="basket" asp-action="UpdateFrommodal" asp-route-id="@Model.Id" class="addModalCount btn border"><i class="fal fa-plus"></i></a>
+                        <a asp-controller="basket" asp-action="UpdateFrommodal" asp-route-id="@Model.Id" class="addCount btn border"><i class="fal fa-plus"></i></a>
                     </div>
                     <a asp-controller="basket" asp-action="addtobasket" asp-route-id="@Model.Id" class="btn btn-default addbasket">Add To Cart</a>
                 </div>

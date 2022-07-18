@@ -122,36 +122,7 @@ $(document).ready(function () {
             })
     })
 
-    $(document).on('click', '.subModalCount', function (e) {
-        e.preventDefault();
-
-        let url = $(this).attr('href') + '?count=' + count;
-        console.log(url);
-    })
-    $(document).on('click', '.addModalCount', function (e) {
-        e.preventDefault();
-        let count = $(this).prev().val();
-
-        if (count < 1) {
-            count = 1
-        }
-
-        count++;
-        $(this).prev().val(count)
-        console.log(count)
-        console.log($(this).attr('href'))
-        let url = $(this).attr('href') + '?count=' + count;
-        console.log(url)
-        fetch(url)
-            .then(res => res.text())
-            .then(data => {
-                $('.modal-body').html(data);
-                fetch('/basket/getbasket')
-                    .then(res => res.text())
-                    .then(data => { $('.header-cart').html(data) });
-            })
-        
-    })
+    
 
 
     $(document).on('click', '.subProductCount', function (e) {
